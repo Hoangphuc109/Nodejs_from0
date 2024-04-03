@@ -1,0 +1,23 @@
+node .\sever.js
+chạy chương trình ở terminal 
+
+code thiếu nhi 
+const http = require('node:http');
+const hostname = '127.0.0.1';
+const port = 3000;
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hoang phuc xin chao');
+});
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+
+nếu cần đẩy git thì xem lại video 15 11:31
+
+freamwork
+Sails: MVC framework for Node.js for building practical, production-ready apps.
+
+html,css,javascrip,jquery,php,mysql
