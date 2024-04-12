@@ -1,4 +1,5 @@
 require('dotenv').config();
+const mysql = require('mysql2');
 const express = require('express')
 const ConfigViewEngine = require('./src/config/viewengine')
 const webroute = require('./src/routes/web')
@@ -23,3 +24,22 @@ app.use('/test', webroute)
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'mydb',
+    port: 3306,
+    password: '12345678'
+});
+
+connection.query(
+    'SELECT * FROM `mydb`.`employee`;',
+    function (err, results, fields) {
+        console.log(results); // in ra cái này 
+        console.log(fields); //không cần lắm
+    }
+)
+
+
+
