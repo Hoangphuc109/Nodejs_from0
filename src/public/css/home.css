@@ -57,3 +57,12 @@ td {
 tr:hover {
     background-color: #ccc;
 }
+
+.nav_form {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.none {
+    display: none;
+}

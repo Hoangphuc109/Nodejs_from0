@@ -4,6 +4,13 @@ const getallusers = async () => {
     return results
 }
 
+// const getupdate = async (employeeid) truyền vào id 
+const getupdate = async (employeeid) => {
+    let [results, fields] = await connection.query('SELECT * FROM `mydb`.`employee` WHERE `idEmployee` = ?;', [employeeid])
+    let employee = results && results.length > 0 ? results[0] : {};
+    return employee
+}
+
 module.exports = {
-    getallusers
+    getallusers, getupdate
 }

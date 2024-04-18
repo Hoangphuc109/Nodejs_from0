@@ -21,3 +21,80 @@ freamwork
 Sails: MVC framework for Node.js for building practical, production-ready apps.
 
 html,css,javascrip,jquery,php,mysql
+
+kết nối đơn giản 
+
+// connection.query(
+    //     'INSERT INTO `mydb`.`employee` (`idEmployee`, `Employee Number`, `Last Name`, `First Name`, `SSN`, `Pay Rate`, `Pay Rates_idPay Rates`, `Vacation Days`, `Paid To Date`, `Paid Last Year`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    //     [idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear],
+    //     function (err, results) {
+    //         if (err) {
+    //             console.error(err);
+    //             res.status(500).send('Error occurred');
+    //         } else {
+    //             console.log(results);
+    //             res.send('Successfully inserted data into the database');
+    //         }
+    //     }
+    // );
+
+
+lặp cơ bảm với ejs 
+
+<%for(let i=0 ; i < ListEmployee.length ; i++){ %>
+            <tr>
+                <td>
+                    <%= ListEmployee[i].idEmployee %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Employee Number'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Last Name'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['First Name'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i].SSN %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Pay Rate'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Pay Rates_idPay Rates'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Vacation Days'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Paid To Date'] %>
+                </td>
+                <td>
+                    <%= ListEmployee[i]['Paid Last Year'] %>
+                </td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+
+
+            <%}%>.
+
+
+
+
+
+// let [results, fields] = await connection.query(
+    //     'INSERT INTO `mydb`.`employee` (`idEmployee`, `Employee Number`, `Last Name`, `First Name`, `SSN`, `Pay Rate`, `Pay Rates_idPay Rates`, `Vacation Days`, `Paid To Date`, `Paid Last Year`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    //     [idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear]
+    // )
+    // const [results, fields] = await connection.query('SELECT * FROM mydb.employee;')
+
+
+
+
+
+
+
