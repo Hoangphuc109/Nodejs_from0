@@ -47,18 +47,18 @@ const getEmployeeId = async (req, res) => {
 }
 
 // update not ok
-// const updateinfo = async (req, res) => {
-//     let { idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear } = req.body;
-//     let [results, fields] = await connection.query(
-//         'UPDATE `mydb`.`employee`SET `Employee Number` = ?,`Last Name` = ?,`First Name` = ?,`SSN` = ?,`Pay Rate` = ?,`Pay Rates_idPay Rates` = ?,`Vacation Days` = ?,`Paid To Date` = ?,`Paid Last Year` = ? WHERE `idEmployee` = ?;',
-//         [emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear, idem]
-//     )
+const updateinfo = async (req, res) => {
+    let { idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear } = req.body;
+    let [results, fields] = await connection.query(
+        'UPDATE `mydb`.`employee` SET `Employee Number` = ?,`Last Name` = ?,`First Name` = ?,`SSN` = ?,`Pay Rate` = ?,`Pay Rates_idPay Rates` = ?,`Vacation Days` = ?,`Paid To Date` = ?,`Paid Last Year` = ? WHERE `idEmployee` = ?;',
+        [emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear, idem]
+    )
 
-//     res.send('Successfully update data into the database');
-// };
+    res.send('Successfully update data into the database');
+};
 
 
 module.exports = {
-    gethomecontroler, gethp, gethomepage, createEmployee, create, getEmployeeId,
+    gethomecontroler, gethp, gethomepage, createEmployee, create, getEmployeeId, updateinfo
 
 }
