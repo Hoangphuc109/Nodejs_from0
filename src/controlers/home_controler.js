@@ -1,6 +1,6 @@
 const { json } = require('express');
 const connection = require('../config/database')
-const { getallusers, getupdate } = require('../services/sevice')
+const { getallusers, getIdEmployee } = require('../services/sevice')
 
 //test first
 const gethp = (req, res) => {
@@ -29,34 +29,36 @@ const gethomepage = async (req, res) => {
     return res.render('home.ejs', { ListEmployee: results })
 }
 
-const connectinfo = async (req, res) => {
-    // console.log("check", req.body)
+const createEmployee = async (req, res) => {
     let { idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear } = req.body;
 
     let [results, fields] = await connection.query(
         'INSERT INTO `mydb`.`employee` (`idEmployee`, `Employee Number`, `Last Name`, `First Name`, `SSN`, `Pay Rate`, `Pay Rates_idPay Rates`, `Vacation Days`, `Paid To Date`, `Paid Last Year`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        [idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear]
-    )
-    // const [results, fields] = await connection.query('SELECT * FROM mydb.employee;')
+        [idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear],
 
-    console.log("check ", results)
-    res.send('Successfully inserted data into the database');
+    );
+    res.send('ok baby nho')
 };
+//get ok 
 const getEmployeeId = async (req, res) => {
     const employeeid = req.params.id;
-    let employee = await getupdate(employeeid);
+    let employee = await getIdEmployee(employeeid);
     res.render('edit.ejs', { employee_update: employee })
 }
 
+// update not ok
+// const updateinfo = async (req, res) => {
+//     let { idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear } = req.body;
+//     let [results, fields] = await connection.query(
+//         'UPDATE `mydb`.`employee`SET `Employee Number` = ?,`Last Name` = ?,`First Name` = ?,`SSN` = ?,`Pay Rate` = ?,`Pay Rates_idPay Rates` = ?,`Vacation Days` = ?,`Paid To Date` = ?,`Paid Last Year` = ? WHERE `idEmployee` = ?;',
+//         [emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear, idem]
+//     )
 
-const updateinfo = async (req, res) => {
-    let { idem, emnum, lname, fname, ssn, payrate, idpayrate, vcd, paidtodate, paidlastyear } = req.body;
-    res.render('edit.ejs')
-    res.send('Successfully inserted data into the database');
-};
+//     res.send('Successfully update data into the database');
+// };
 
 
 module.exports = {
-    gethomecontroler, gethp, gethomepage, connectinfo, create, getEmployeeId, updateinfo
+    gethomecontroler, gethp, gethomepage, createEmployee, create, getEmployeeId,
 
 }
