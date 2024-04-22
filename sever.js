@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require('express')
 const ConfigViewEngine = require('./src/config/viewengine')
-const webroute = require('./src/routes/web')
+const webroute = require('./src/routes/web_Employee')
+const webroute1 = require('./src/routes/web_pay_rate')
 const path = require('path');
-const router = require('./src/routes/web');
+const router = require('./src/routes/web_Employee');
 const app = express();
 const port = process.env.PORT || 8888;
 // const hostname = process.env.hostname;
@@ -23,18 +24,13 @@ app.use(express.urlencoded());//ParseURL-encodedbodies
 
 //khai báo route
 app.use('/', webroute)
+app.use('/', webroute1)
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-// connection.query(
-//     'SELECT * FROM `mydb`.`employee`;',
-//     function (err, results, fields) {
-//         console.log(results); // in ra cái này
-//         // console.log(fields); //không cần lắm
-//     }
-// )
 
 
 

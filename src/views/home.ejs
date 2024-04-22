@@ -61,9 +61,16 @@
                     <%= user['Paid Last Year'] %>
                 </td>
                 <td>
-                    <a href="/getEmployeeId/<%= user.idEmployee %>">Edit</a>
+                    <!-- <a href="/getEmployeeId/<%= user.idEmployee %>">Edit</a> -->
                     <!-- <button>Edit</button> -->
-                    <button>Delete</button>
+                    <form action="/getEmployeeId/<%= user.idEmployee %>" method="post">
+                        <button>Edit</button>
+
+                    </form>
+                    <form action="/deleteEmployee/<%= user.idEmployee %>" method="post">
+                        <button>Delete</button>
+
+                    </form>
                 </td>
             </tr>
             <%});%>
