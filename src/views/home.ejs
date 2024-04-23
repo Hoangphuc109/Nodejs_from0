@@ -10,7 +10,8 @@
 <body>
     <div class="topnav">
         <a class="active" href="/home">Home</a>
-        <a href="/create">Create User</a>
+        <a href="/create">Create Employee</a>
+        <a href="/payrates">Pay Rates</a>
     </div>
 
     <table>
@@ -28,46 +29,46 @@
             <th>Acction</th>
         </tr>
 
-        <% ListEmployee.forEach(function(user){ %>
+        <% ListEmployee.forEach(function(Em){ %>
             <tr>
                 <td>
-                    <%= user.idEmployee %>
+                    <%= Em.idEmployee %>
                 </td>
                 <td>
-                    <%= user['Employee Number'] %>
+                    <%= Em['Employee Number'] %>
                 </td>
                 <td>
-                    <%= user['Last Name'] %>
+                    <%= Em['Last Name'] %>
                 </td>
                 <td>
-                    <%= user['First Name'] %>
+                    <%= Em['First Name'] %>
                 </td>
                 <td>
-                    <%= user.SSN %>
+                    <%= Em.SSN %>
                 </td>
                 <td>
-                    <%= user['Pay Rate'] %>
+                    <%= Em['Pay Rate'] %>
                 </td>
                 <td>
-                    <%= user['Pay Rates_idPay Rates'] %>
+                    <%= Em['Pay Rates_idPay Rates'] %>
                 </td>
                 <td>
-                    <%= user['Vacation Days'] %>
+                    <%= Em['Vacation Days'] %>
                 </td>
                 <td>
-                    <%= user['Paid To Date'] %>
+                    <%= Em['Paid To Date'] %>
                 </td>
                 <td>
-                    <%= user['Paid Last Year'] %>
+                    <%= Em['Paid Last Year'] %>
                 </td>
                 <td>
-                    <!-- <a href="/getEmployeeId/<%= user.idEmployee %>">Edit</a> -->
+                    <!-- <a href="/getEmployeeId/<%= Em.idEmployee %>">Edit</a> -->
                     <!-- <button>Edit</button> -->
-                    <form action="/getEmployeeId/<%= user.idEmployee %>" method="post">
+                    <form action="/getEmployeeId/<%= Em.idEmployee %>" method="post">
                         <button>Edit</button>
 
                     </form>
-                    <form action="/deleteEmployee/<%= user.idEmployee %>" method="post">
+                    <form action="/deleteEmployee/<%= Em.idEmployee %>" method="post">
                         <button>Delete</button>
 
                     </form>

@@ -10,6 +10,17 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hoang phuc xin chao');
 });
+----------------------------
+kết nối DB
+connection.query(
+    'SELECT * FROM `mydb`.`pay rates`;',
+    function (err, results, fields) {
+        console.log(results); // in ra cái này
+        // console.log(fields); //không cần lắm
+    }
+)
+
+--------------------------------------
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
@@ -21,7 +32,7 @@ freamwork
 Sails: MVC framework for Node.js for building practical, production-ready apps.
 
 html,css,javascrip,jquery,php,mysql
-
+-------------------------------------------------------------------------------
 kết nối đơn giản 
 
 // connection.query(
@@ -40,7 +51,7 @@ kết nối đơn giản
 
 
 lặp cơ bảm với ejs 
-
+---------------------------------------------------------------------------------
 <%for(let i=0 ; i < ListEmployee.length ; i++){ %>
             <tr>
                 <td>
@@ -84,7 +95,7 @@ lặp cơ bảm với ejs
 
 
 
-
+---------------------------------------------------------------------------------
 
 // let [results, fields] = await connection.query(
     //     'INSERT INTO `mydb`.`employee` (`idEmployee`, `Employee Number`, `Last Name`, `First Name`, `SSN`, `Pay Rate`, `Pay Rates_idPay Rates`, `Vacation Days`, `Paid To Date`, `Paid Last Year`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -93,7 +104,7 @@ lặp cơ bảm với ejs
     // const [results, fields] = await connection.query('SELECT * FROM mydb.employee;')
 
 
-
+----------------------------------------------------------------------------------
 
 
 <% ListEmployee.forEach(function(user){ %>
@@ -137,7 +148,7 @@ lặp cơ bảm với ejs
             <%});%>
 
 
-
+-----------------------------------------------------------------------------------------------------
 
 insert employee chưa có asyn await
 const createEmployee =  (req, res) => {
@@ -157,3 +168,45 @@ const createEmployee =  (req, res) => {
         }
     );
 };
+
+
+
+       <!-- 
+        <% List_payrate.forEach(function(payrates){ %>
+            <tr>
+                <td>
+                    <%= payrates['idPay Rate'] %>
+                </td>
+                <td>
+                    <%= payrates['Pay Rate Name'] %>
+                </td>
+                <td>
+                    <%= payrates.Value %>
+                </td>
+                <td>
+                    <%= payrates['Tax Percentage'] %>
+                </td>
+                <td>
+                    <%= payrates['Pay Type'] %>
+                </td>
+                <td>
+                    <%= payrates['Pay Amount'] %>
+                </td>
+                <td>
+                    <%= payrates['PT - Level C'] %>
+                </td>
+                <td> -->
+        <!-- <form action="/getEmployeeId/<%= Em.idEmployee %>" method="post">
+                        <button>Edit</button>
+
+                    </form>
+                    <form action="/deleteEmployee/<%= Em.idEmployee %>" method="post">
+                        <button>Delete</button>
+
+                    </form>
+                </td> -->
+
+        </tr>
+
+        <%});%>
+

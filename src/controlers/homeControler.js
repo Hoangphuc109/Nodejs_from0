@@ -1,6 +1,10 @@
 const { json } = require('express');
 const connection = require('../config/database')
-const { getallusers, getIdEmployee, createEm, updateEm, deleteEm } = require('../services/sevice')
+const { getallusers, getIdEmployee, createEm, updateEm, deleteEm,
+    //-----------------------------------------------------------
+    getall_payrate,
+
+} = require('../services/sevice')
 
 //test first
 const gethp = (req, res) => {
@@ -17,8 +21,8 @@ const gethomecontroler = (req, res) => {
     connection.query(
         'SELECT * FROM `mydb`.`employee`;',
         function (err, results, fields) {
-            user = results;
-            res.send(JSON.stringify(user))
+            Em = results;
+            res.send(JSON.stringify(Em))
         }
     )
 
@@ -67,11 +71,34 @@ const deleteinfo = async (req, res) => {
     await deleteEm(id);
     res.redirect('/home')
 };
+//______________________________________________________//
+//PAYRATES
+
+
+const gethomecontroler_PR = (req, res) => {
+    let user = [];
+    connection.query(
+        'SELECT * FROM `mydb`.`employee`;',
+        function (err, results, fields) {
+            Em = results;
+            res.send(JSON.stringify(Em))
+        }
+    )
+
+}
+
+const gethomepayrate = async (req, res) => {
+    let results = await getall_payrate();
+    return res.render('payrates.ejs', { List_payrate: results })
+}
+
 
 module.exports = {
     gethomecontroler, gethp,
     gethomepage, createEmployee,
     create, getEmployeeId, updateinfo,
-    deleteEmployee, deleteinfo
+    deleteEmployee, deleteinfo,
+    //----------------------------
+    gethomepayrate, gethomecontroler_PR
 
 }

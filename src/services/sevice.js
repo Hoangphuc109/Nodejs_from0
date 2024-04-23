@@ -40,6 +40,14 @@ const deleteEm = async (id) => {
     // emid là "name" tên biến đã đặt req.body.emid là trỏ thẳng tới thằng id của employee
     // res.redirect('/home')
 }
+
+//---------------------------------------------
+const getall_payrate = async () => {
+    let [results, fields] = await connection.query('SELECT * FROM `mydb`.`pay rates`;')
+    return results
+}
 module.exports = {
-    getallusers, getIdEmployee, createEm, updateEm, deleteEm
+    getallusers, getIdEmployee, createEm, updateEm, deleteEm,
+    //------------------------------
+    getall_payrate,
 }
