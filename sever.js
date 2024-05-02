@@ -1,14 +1,13 @@
 require('dotenv').config();
-const connection = require('../nodejs_from_0/src/config/database')
-
 const express = require('express')
 const ConfigViewEngine = require('./src/config/viewengine')
-const webroute = require('./src/routes/web')
+const webroute = require('./src/routes/api')
 const path = require('path');
-const router = require('./src/routes/web');
+const router = require('./src/routes/api');
 const app = express();
+
 const port = process.env.PORT || 8888;
-// const hostname = process.env.hostname;
+const hostname = process.env.hostname;
 // trong trường hợp không link được lỗi config view engine
 //lên gõ stack overflow là có hết
 // khai báo 
@@ -24,7 +23,7 @@ app.use(express.urlencoded());//ParseURL-encodedbodies
 
 
 //khai báo route
-app.use('/', webroute)
+app.use('/', router)
 
 
 app.listen(port, () => {
