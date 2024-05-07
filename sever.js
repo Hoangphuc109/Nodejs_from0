@@ -1,11 +1,9 @@
 require('dotenv').config();
-const connection = require('../nodejs_from_0/src/config/database')
-
 const express = require('express')
 const ConfigViewEngine = require('./src/config/viewengine')
-const webroute = require('./src/routes/web')
+const webroute = require('./src/routes/api')
 const path = require('path');
-const router = require('./src/routes/web');
+const router = require('./src/routes/api');
 const app = express();
 
 const port = process.env.PORT || 8888;
@@ -25,7 +23,7 @@ app.use(express.urlencoded());//ParseURL-encodedbodies
 
 
 //khai báo route
-app.use('/', webroute)
+app.use('/', router)
 
 
 app.listen(port, () => {
