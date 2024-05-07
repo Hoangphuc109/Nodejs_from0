@@ -1,0 +1,9 @@
+đầu tiên kết nối github đã 
+
+npm init 
+-> tạo ra package.json
+
+npm install --save-dev nodemon
+mở thêm powershell
+để thằng nodemon chạy bên sv của thằng dev thôi 
+mỗi lần lưu nó sẽ tự động "npm run dev" không cần phải ctrl+s

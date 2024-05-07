@@ -42,8 +42,10 @@ const deleteEm = async (id) => {
 }
 
 //---------------------------------------------
+
+
 const getall_payrate = async () => {
-    let [results, fields] = await connection.query('SELECT * FROM `mydb`.`pay rates`;')
+    let [results, fields] = await connection.query('SELECT * FROM `mydb`.`payrates`;')
     return results
 }
 module.exports = {

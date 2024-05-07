@@ -7,8 +7,9 @@ const webroute = require('./src/routes/web')
 const path = require('path');
 const router = require('./src/routes/web');
 const app = express();
+
 const port = process.env.PORT || 8888;
-// const hostname = process.env.hostname;
+const hostname = process.env.hostname;
 // trong trường hợp không link được lỗi config view engine
 //lên gõ stack overflow là có hết
 // khai báo 
